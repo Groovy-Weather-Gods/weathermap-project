@@ -1,3 +1,4 @@
+var date = document.querySelector('.date');
 var name = document.querySelector('.name');
 var desc = document.querySelector('.desc');
 var temp = document.querySelector('.temp');
@@ -14,6 +15,7 @@ $.get("http://api.openweathermap.org/data/2.5/weather", {
     units: "imperial"
 }).done(function(data) {
     console.log(data);
+    var dateValue = data['dt'];
     var nameValue = data['name'];
     var tempValue = data['main']['temp'].toFixed(0);
     var descValue = data['weather'][0]['description'];
@@ -21,13 +23,17 @@ $.get("http://api.openweathermap.org/data/2.5/weather", {
     var windValue = data['wind']['speed'].toFixed(1);
     var pressureValue = data['main']['pressure'];
 
+    date.innerHTML = convertUTC(dateValue);
     name.innerHTML = nameValue;
-    desc.innerHTML = ("Description: " + descValue);
-    temp.innerHTML = ("Current temperature: " + tempValue + "°F");
-    humidity.innerHTML = ("Humidity: " + humidityValue + "%");
-    wind.innerHTML = ("Wind: " + windValue +"mph")
-    pressure.innerHTML = ("Pressure: " + pressureValue +"Pa");
+    desc.innerHTML = descValue;
+    temp.innerHTML = (tempValue + "°F");
+    humidity.innerHTML = (humidityValue + "%");
+    wind.innerHTML = (windValue +"mph")
+    pressure.innerHTML = (pressureValue +"Pa");
 
+    function convertUTC() {
+        return new Date().toLocaleDateString();
+    }
 
 });
 
