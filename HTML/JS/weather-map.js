@@ -17,25 +17,42 @@ $.get("http://api.openweathermap.org/data/2.5/forecast?q=london&appid="+ OPEN_WE
     units: "imperial"
 }).done(function(data) {
     console.log(data);
-    var dateValue = data['dt'];
-    // var nameValue = data['name'];
-    // var tempValue = data['main']['temp'].toFixed(0);
+    // var dateValue = data['dt'];
+    // var tempValue = data['temp'];
+    
     // var descValue = data['weather'][0]['description'];
     // var humidityValue = data['main']['humidity'];
     // var windValue = data['wind']['speed'].toFixed(1);
     // var pressureValue = data['main']['pressure'];
 
-    // for (var i = 0; i < 6; i++) {
-    //     document.getElementById('day' + (i+1)).innerHTML =  String(data.list[i].dt);
-    //     // console.log(typeof [i])
-    // }
-    //for loop to display the data to each day
+//     var dateValue = data.list[i].dt;
+
+
+//    console.log(dateValue)
+//    $('.date').each(function(dateEl){
+//        $(this).innerHtml = dateValue;
+//    })
+
     for (var i = 0; i < 6; i++) {
         var dateValue = data.list[i].dt;
-        document.getElementById('day' + (i+1)).innerHTML =  String(dateValue);
-        
-    }
 
+
+        console.log(dateValue)
+        $('.date').each(function(dateEl){
+            $(this).html((String(dateValue)));
+           
+        })
+
+        // var dateValue = data.list[i].dt;
+        // console.log(dateValue);
+        // var date = document.getElementById('day' + (i+1)); 
+        // console.log(date);
+    }
+    // for (var t = 0; t < 6; t++) {
+    //     var tempValue = data.list[t].main.temp;
+    //     document.getElementById('temp' + (t+1)).innerHTML(String(tempValue));
+    // }
+// =  String(dateValue)
     // for (var i = 0; i < 6; i++) {
     //     var date = new Date(data.list[i].dt * 1000);
     //     var day = date.getDay();
@@ -52,7 +69,7 @@ $.get("http://api.openweathermap.org/data/2.5/forecast?q=london&appid="+ OPEN_WE
     //     console.log("this value",value)
     // })
 
-    date.innerHTML = dateValue;
+
     // name.innerHTML = nameValue;
     // desc.innerHTML = descValue;
     // temp.innerHTML = (tempValue + "°F");
