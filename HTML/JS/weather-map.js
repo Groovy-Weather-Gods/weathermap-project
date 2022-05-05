@@ -6,10 +6,10 @@ var wind = document.querySelector('.wind');
 var pressure = document.querySelector('.pressure');
 
 
-const OPEN_WEATHER_APPID = '3567515707a7e75d45fb9334c9856c89'
+// const OPEN_WEATHER_APPID = '3567515707a7e75d45fb9334c9856c89'
 
 $.get("http://api.openweathermap.org/data/2.5/weather", {
-    APPID: OPEN_WEATHER_APPID,
+    APPID: "../js/keys.js",
     q:     "San Antonio, US",
     units: "imperial"
 }).done(function(data) {
