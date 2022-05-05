@@ -25,10 +25,26 @@ $.get("http://api.openweathermap.org/data/2.5/forecast?q=london&appid="+ OPEN_WE
     // var windValue = data['wind']['speed'].toFixed(1);
     // var pressureValue = data['main']['pressure'];
 
+    // for (var i = 0; i < 6; i++) {
+    //     document.getElementById('day' + (i+1)).innerHTML =  String(data.list[i].dt);
+    //     // console.log(typeof [i])
+    // }
+    //for loop to display the data to each day
     for (var i = 0; i < 6; i++) {
-        console.log(document.getElementById('day' + (i+1)).innerHTML =  String(data.list[i].dt));
-        // console.log(typeof [i])
+        var dateValue = data.list[i].dt;
+        document.getElementById('day' + (i+1)).innerHTML =  String(dateValue);
+        
     }
+
+    // for (var i = 0; i < 6; i++) {
+    //     var date = new Date(data.list[i].dt * 1000);
+    //     var day = date.getDay();
+    //     var month = date.getMonth();
+    //     var dayOfMonth = date.getDate();
+    //     var year = date.getFullYear();
+    //     var dateString = month + "/" + dayOfMonth + "/" + year;
+    //     document.getElementById('day' + (i+1)).innerHTML =  dateString;
+    // }
 
     // Object.values(data).forEach(function (value) {
         // console.log(document.getElementById('day1').innerHTML =  data.list[i].dt);
