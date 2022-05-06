@@ -9,6 +9,24 @@
 
 // test commit
 
+mapboxgl.accessToken = MAPBOX_KEY;
+    var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/mapbox/streets-v11',
+center: [-79.4512, 43.6568],
+zoom: 13
+});
+
+var marker = new mapboxgl.Marker();
+
+function add_marker (event) {
+  var coordinates = event.lngLat;
+  console.log('Lng:', coordinates.lng, 'Lat:', coordinates.lat);
+  marker.setLngLat(coordinates).addTo(map);
+  return coordinates;
+}
+
+map.on('click', add_marker);
 
 
 
