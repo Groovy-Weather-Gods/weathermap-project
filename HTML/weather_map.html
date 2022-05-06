@@ -6,10 +6,15 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Weather Map Practice</title>
+
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/weather-map.css">
     <script src="js/keys.js"></script>
+    <script src="js/mapbox-geocoder-utils.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.js'></script>
+
 </head>
 <body>
 <!--<nav class="navbar fixed-top navbar-dark navbar-expand bg-primary">-->
@@ -87,7 +92,7 @@
 
 </div>
 
-
+<div id="map" style='width: 400px; height: 300px;'></div>
 
 
 
@@ -145,7 +150,22 @@
 
 <script src="js/non-loop.js"></script>
 
+<script>
+    mapboxgl.accessToken = MAPBOX_KEY;
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/streets-v11', // style URL
+        center: [-86.1934114, 39.741091], // starting position [lng, lat]
+        zoom: 9 // starting zoom
+    });
 
+    geocode("Indianapolis, Indiana", 'pk.eyJ1Ijoid2F5d2FyZHRyZWtzIiwiYSI6ImNsMnFsYXo4ejBhMW8zZ3F2N2xzNndsMmEifQ.qT4MWiKBHvVEri7lFtbN-A').then(function(result) {
+        console.log(result);
+        map.setCenter(result);
+        map.setZoom(9);
+    });
+
+</script>
 
 
 
