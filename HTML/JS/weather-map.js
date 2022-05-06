@@ -143,4 +143,3 @@ $.get("http://api.openweathermap.org/data/2.5/forecast?q=london&appid="+ OPEN_WE
 
 
 
-
