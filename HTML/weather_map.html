@@ -150,22 +150,6 @@
 
 <script src="js/non-loop.js"></script>
 
-<script>
-    mapboxgl.accessToken = MAPBOX_KEY;
-    const map = new mapboxgl.Map({
-        container: 'map', // container ID
-        style: 'mapbox://styles/mapbox/streets-v11', // style URL
-        center: [-86.1934114, 39.741091], // starting position [lng, lat]
-        zoom: 9 // starting zoom
-    });
-
-    geocode("Indianapolis, Indiana", 'pk.eyJ1Ijoid2F5d2FyZHRyZWtzIiwiYSI6ImNsMnFsYXo4ejBhMW8zZ3F2N2xzNndsMmEifQ.qT4MWiKBHvVEri7lFtbN-A').then(function(result) {
-        console.log(result);
-        map.setCenter(result);
-        map.setZoom(9);
-    });
-
-</script>
 
 
 

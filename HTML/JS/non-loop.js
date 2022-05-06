@@ -21,9 +21,12 @@ var marker = new mapboxgl.Marker();
 
 function add_marker (event) {
   var coordinates = event.lngLat;
-  console.log('Lng:', coordinates.lng, 'Lat:', coordinates.lat);
+  var coorLat = coordinates.lat;
+  var coorLon = coordinates.lng; 
+  console.log(coorLat);
+    console.log(coorLon);
   marker.setLngLat(coordinates).addTo(map);
-  return coordinates;
+    // $.get("https://api.openweathermap.org/data/2.5/forecast?lat={coorLat}&lon={coorLon}&appid={API key}"){
 }
 
 map.on('click', add_marker);
@@ -39,13 +42,19 @@ map.on('click', add_marker);
 
 
     
-$('#submit').click(function(e) {
-    e.preventDefault();
-    var city = document.getElementById('city').value;
-    $('.cityName').text(city);
+function markerWeather (event) {
+    var coordinates = event.lngLat;
+    var coorLat = coordinates.lat;
+    var coorLon = coordinates.lng;
+    console.log(coorLat);
+    console.log(coorLon);
+    marker.setLngLat(coordinates).addTo(map);
+$.get("http://api.openweathermap.org/data/2.5/weather?", {
+    join_key: "&appid=" + "3567515707a7e75d45fb9334c9856c89",
+    lat_long: "lat=" + (coorLat)+ "&lon=" + (coorLon),
+    units: "&units=metric",
     
-$.get("http://api.openweathermap.org/data/2.5/forecast?q=" + city+ "&appid="+ OPEN_WEATHER_APPID, {
-units: "imperial"
+
 }).done(function(data) {    
 
 var dateValueDay1 = data.list[0].dt;
@@ -98,9 +107,9 @@ $('#wind5').html("Wind: " +wind5);
 
 });
 
-});
-
-
+};
+map.on('click', add_marker);
+map.on('click', markerWeather);
 // mapboxgl.MAPBOX_KEY = MAPBOX_KEY;
 // const map = new mapboxgl.Map({
 //     container: 'map', // container ID
@@ -108,7 +117,6 @@ $('#wind5').html("Wind: " +wind5);
 //     center: [-86.1934114, 39.741091], // starting position [lng, lat]
 //     zoom: 9 // starting zoom
 // });
-
 
 
 
