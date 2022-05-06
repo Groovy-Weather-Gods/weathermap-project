@@ -31,31 +31,20 @@ function add_marker (event) {
 
 map.on('click', add_marker);
 
-
-
-
-
-
-
-
-
-
-
-    
 function markerWeather (event) {
     var coordinates = event.lngLat;
     var coorLat = coordinates.lat;
     var coorLon = coordinates.lng;
-    console.log(coorLat);
+    console.log('this is coorlat',coorLat);
     console.log(coorLon);
     marker.setLngLat(coordinates).addTo(map);
-$.get("http://api.openweathermap.org/data/2.5/weather?", {
-    join_key: "&appid=" + "3567515707a7e75d45fb9334c9856c89",
-    lat_long: "lat=" + (coorLat)+ "&lon=" + (coorLon),
-    units: "&units=metric",
-    
 
-}).done(function(data) {    
+    $.get("https://api.openweathermap.org/data/2.5/forecast", {
+        APPID: "3567515707a7e75d45fb9334c9856c89",
+        lat: coorLat,
+        lon: coorLon,
+
+    }).done(function(data) {
 
 var dateValueDay1 = data.list[0].dt;
 var dateValueDay2 = data.list[5].dt;
@@ -103,7 +92,6 @@ $('#wind2').html("Wind: " +wind2);
 $('#wind3').html("Wind: " +wind3);
 $('#wind4').html("Wind: " +wind4);
 $('#wind5').html("Wind: " +wind5);
-
 
 });
 
