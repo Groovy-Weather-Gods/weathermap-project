@@ -24,7 +24,7 @@ window.onload = function() {
                 var seconds = "0" + date.getSeconds();
                 var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
                 var formattedDate = date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
-                return formattedDate + ' ' + formattedTime;
+                return formattedDate ;
             }
             console.log(epochToDate(dateValueDay1));
             $('#day1').html("Date: " + epochToDate(dateValueDay1));

@@ -48,8 +48,8 @@ body {
     display: flex;
     flex-direction: column;
     /*flex: 0 0 10%;*/
-    width: 175px;
-    min-width: 150px;
+    width: 125px;
+    max-width: 150px;
     height: 125px;
     border: 1px solid white;
     border-radius: 15px;
@@ -88,9 +88,10 @@ button:hover {
     margin-top: 10px;
 }
 .icon{
-    width: 40px;
-    height: 40px;
+    width: 25px;
+    height: 25px;
     margin: 0 auto;
+    padding: 0;
 }
 
 form{
